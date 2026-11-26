@@ -1,34 +1,35 @@
-# دليل استكمال رفع ملفات المشروع على GitHub
+# Final GitHub Upload — Arabic Instructions
 
-أنشئ المستودع بنجاح، وتم رفع README وملفات التوثيق الأساسية.
+تم إنشاء المستودع العام ورفع ملفات README ووصف المشروع والصورة التوضيحية الخاصة بالمؤشرات ومعلومات تحليل الحساسية.
 
-## الملفات التي تحتاج رفعًا
+## الملفات التي بقي رفعها
 
-- `hotel_bookings_Analysis.xlsx` — ملف Excel الأصلي بحجم يقارب **68.4 MiB** (أكبر من حد الرفع العادي عبر متصفح GitHub، وهو 25 MiB للملف الواحد).
-- `assets/dashboard_overview.png` — صورة الداشبورد الرئيسي.
-- `assets/risk_deep_dive.png` — صورة صفحة Risk Deep Dive.
+1. **hotel_bookings_Analysis.xlsx**: النسخة الأخيرة التي أرسلتِها، وتحتوي على **17 ورقة**، منها **Sensitivity Analysis**. حجمها حوالى **41.6 MiB (43.6 MB)**.
+2. **assets/dashboard_overview.png**: صورة الداشبورد الرئيسي بعد قص واجهة Excel.
+3. **assets/risk_deep_dive.png**: صورة صفحة Risk Deep Dive بعد قص واجهة Excel.
 
-الملفات الثلاثة موجودة داخل حزمة `Hotel_Booking_GitHub_Ready.zip` التي تم تجهيزها في المحادثة.
+هذه الملفات الثلاثة مجمعة في الحزمة المرفقة داخل محادثة ChatGPT.
 
-## رفع الصور من المتصفح
+## رفع الصور — من GitHub مباشرة
 
-1. افتحي المستودع: https://github.com/Layanyy17/Hotel-Booking-Cancellation-Analysis
-2. اختاري `Add file` ثم `Upload files`.
-3. اسحبي مجلد `assets` من الحزمة بعد فك ضغط ZIP، مع المحافظة على أسماء الملفات ومسار المجلد.
-4. أكملي `Commit changes`.
+1. افتحي https://github.com/Layanyy17/Hotel-Booking-Cancellation-Analysis
+2. اضغطي **Add file → Upload files**.
+3. ارفعي مجلد **assets** الموجود في الحزمة، ويحتوي على الصورتين. حافظي على اسم المجلد.
+4. اضغطي **Commit changes**.
 
-## رفع ملف Excel باستخدام GitHub Desktop
+## رفع ملف Excel — باستخدام GitHub Desktop
 
-1. نزّلي GitHub Desktop من https://desktop.github.com ثم سجّلي دخولك إلى حساب GitHub.
-2. اختاري `File > Clone repository` وحددي `Layanyy17/Hotel-Booking-Cancellation-Analysis`.
-3. افتحي المجلد المحلي للمستودع وانسخي بداخله ملف `hotel_bookings_Analysis.xlsx`.
-4. ارجعي إلى GitHub Desktop، اكتبي رسالة commit مثل `Add interactive Excel analysis workbook`، ثم اختاري `Commit to main` وبعدها `Push origin`.
-5. تأكدي من ظهور الملف في المستودع.
+رفع ملف بحجم 43.6 MB يتجاوز الحد المعتاد لرفع الملفات عبر متصفح GitHub (25 MiB)، لكنه أقل من حد الملف الواحد في Git (100 MiB).
 
-## تنبيه قبل النشر العام
+1. افتحي GitHub Desktop وسجّلي دخولك بحساب **Layanyy17**.
+2. اختاري **File → Clone Repository** ثم المستودع **Layanyy17/Hotel-Booking-Cancellation-Analysis**.
+3. افتحي مجلد المستودع في الكمبيوتر.
+4. انسخي إليه ملف **hotel_bookings_Analysis.xlsx** (دون فتحه أو تغييره).
+5. ارجعي إلى GitHub Desktop واضغطي **Commit to main** ثم **Push origin**.
+6. تأكدي أن ملف Excel وصور الداشبورد ظهرت في صفحة المستودع.
 
-تأكدي أن مصدر مجموعة البيانات يسمح بإعادة نشر ملف البيانات كاملًا. إن لم تكن رخصته واضحة، اكتفي برفع صور الداشبورد وREADME ونتائج التحليل إلى أن تتحققي من صلاحية نشر البيانات.
+## ملاحظة عن البيانات
 
-## ملاحظة
+قبل نشر ملف البيانات كاملًا في مستودع **Public** تأكدي أن مصدر مجموعة البيانات يسمح بإعادة النشر. إذا لم تكن الرخصة واضحة، من الأفضل نشر README وصور الداشبورد والنتائج فقط حتى تتأكدي من شروط المصدر.
 
-GitHub يعرض ملف Excel كملف للتنزيل، وليس داشبورد تفاعليًا مباشرًا؛ التفاعل والفلاتر يكونان من خلال فتح الملف على Microsoft Excel لسطح المكتب.
+ملف Excel لا يعمل تفاعليًا داخل متصفح GitHub؛ يجب تنزيله وفتحه في تطبيق **Microsoft Excel**.
