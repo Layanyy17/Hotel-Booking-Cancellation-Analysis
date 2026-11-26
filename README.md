@@ -1,106 +1,121 @@
 # Hotel Booking Cancellation Analysis
 
-**Excel Data Analytics Portfolio Project** · Data Cleaning · Data Quality · PivotTables · Interactive Dashboards · Business Insights
+**Excel Data Analytics Portfolio** | Data Cleaning · Quality Assurance · PivotTables · Interactive Dashboards · Sensitivity Analysis
 
-An end-to-end Excel analysis of hotel booking behavior, cancellation patterns, and **estimated booking-value exposure** across **119,390 reservations** (arrival years 2015–2017). The workbook includes **18 worksheets**, including the cleaned dataset, audit and cleaning documentation, supporting analyses, and two interactive dashboards.
+An end-to-end analysis of hotel booking cancellations across **119,390 records**. The project combines data auditing, documented cleaning decisions, exploratory analysis, and **two interactive Microsoft Excel dashboards**. A separate sensitivity analysis tests how the results change when exact matching rows are excluded.
 
-> **Interpretation:** Estimated canceled booking value represents the booked value associated with canceled reservations. It is **not confirmed revenue loss**. No reporting currency is asserted.
+![Hotel Booking Analysis overview](assets/portfolio_summary.svg)
 
-## Dashboard previews
+> **Important:** Estimated canceled booking value is an estimate of booking-value exposure, **not confirmed revenue loss**. The dataset does not specify a currency.
 
-Screenshots are included in the project upload package and will appear here after the `assets/` images are added to this repository.
+## Project question
 
-**Overview dashboard** — booking volumes, cancellation performance, hotel comparisons, deposit type, market segments, and booking lead time.
+**Which booking characteristics and segments show elevated cancellation rates, and how sensitive are the findings to data-quality decisions?**
 
-**Risk Deep Dive dashboard** — lead-time risk, deposit type × market segment, monthly risk, and estimated canceled value by hotel.
+### Key indicators — full original dataset
 
-Both dashboards include dropdown filters for **hotel**, **arrival year**, **market segment**, and **deposit type**. Category-comparison charts intentionally exclude their own category filter in some views to preserve meaningful comparisons. When *All Years* is selected, the seasonal risk view uses **2016**, the complete calendar year in this dataset.
+| Indicator | Value |
+|:--|--:|
+| Bookings | **119,390** |
+| Canceled bookings | **44,224** |
+| Cancellation rate | **37.04%** |
+| Average booking lead time | **104.0 days** |
+| Estimated canceled booking value | **16,727,237.12** |
 
-## Key performance indicators
-
-| Metric | Result |
-| --- | ---: |
-| Total reservations | **119,390** |
-| Canceled reservations | **44,224** |
-| Overall cancellation rate | **37.04%** |
-| Average lead time | **104.0 days** |
-| Estimated canceled booking value | **16,727,237** (currency unspecified) |
-
-## Findings
-
-### Hotel comparison
+### Hotel-level findings
 
 | Hotel | Bookings | Canceled | Cancellation rate |
-| --- | ---: | ---: | ---: |
+|:--|--:|--:|--:|
 | City Hotel | 79,330 | 33,102 | **41.73%** |
 | Resort Hotel | 40,060 | 11,122 | **27.76%** |
 
-### Deposit categories
+The **Non Refund** deposit category recorded **14,494 cancellations out of 14,587 bookings (99.36%)**. This unusually high association should be investigated; the data **do not establish causation**.
 
-The **Non Refund** category had **14,494 canceled bookings out of 14,587** (**99.36%**). This unusual relationship warrants further investigation of booking, deposit, and cancellation processes; it should not be interpreted as proof of causation.
+**Online TA** accounted for approximately **10,227,646.11** in estimated canceled booking value across the two hotels. This is exposure associated with canceled bookings, not a measured financial loss.
 
-### Lead-time risk
+In the complete calendar year **2016**, October's cancellation rate was **40.53%** (2,514 / 6,203) versus **24.78%** (557 / 2,248) in January. The 2015 and 2017 data cover partial years, so direct seasonal comparisons require caution.
 
-Across the full dataset, reservations made **360+ days before arrival** had a **67.15%** cancellation rate. In **2015** the rate was **96.24%**, but the sample contained only **266 bookings** (**256 canceled**). Sample sizes are essential context for unusually high rates.
+## Sensitivity analysis: exact matching records
 
-### Booking-value concentration
+During data-quality review, **31,994 additional rows** were identified as exact matches across the original **32 booking fields**.
 
-**Online TA** accounted for approximately **10,227,646** in estimated canceled booking value across both hotels. This is a useful starting point for investigating exposure, not a measured financial loss.
+Because the source has **no unique booking ID**, these matches are not automatically treated as erroneous duplicates. The primary dashboards **retain all original records**; a secondary scenario removes repeated exact matches to show how results would change.
 
-### Seasonality
+| Measure | A — All records | B — Exact matches removed |
+|:--|--:|--:|
+| Booking records | 119,390 | 87,396 |
+| Canceled records | 44,224 | 24,025 |
+| Cancellation rate | **37.04%** | **27.49%** |
+| Estimated canceled booking value | 16,727,237.12 | 11,484,042.98 |
+| Highest-risk eligible market segment | **Groups** | **Online TA** |
 
-For the full year **2016**, **October** had a **40.53%** cancellation rate (**2,514 / 6,203**), versus **24.78%** in **January** (**557 / 2,248**). The arrival-year coverage for 2015 and 2017 is partial and should be considered when comparing years.
+The overall cancellation rate changes by **−9.55 percentage points** between the scenarios. The **Sensitivity Analysis** sheet also provides group-level comparisons and explains the methodology and limitations.
 
-## Workflow
+This comparison does **not** prove which of the scenarios reflects the number of distinct real-world bookings; it makes the effect of the uncertain duplicate-handling decision explicit.
 
-1. **Data audit:** Inspect missing and unusual values, zero-night stays, possible duplicates, lead-time anomalies, and deposit patterns.
-2. **Cleaning documentation:** Record checks and handling decisions in `Audit` and `cleaning Log`. Exact matching records were flagged rather than automatically deleted because a unique booking ID was not available.
-3. **PivotTable analysis:** Review cancellation rates, hotel differences, market segments, deposit categories, booking lead time, and seasonal trends.
-4. **Interactive dashboard development:** Build KPI cards, charts, and four dropdown filters, supported by a dedicated `Dashboard Engine` worksheet.
-5. **Business interpretation:** Document evidence, implications, and recommended follow-up investigations in `Business Insights`.
+## Dashboards
 
-## Formulas and definitions
+**Dashboard — Cancellation Intelligence**
+- Five KPI cards: bookings, cancellations, cancellation rate, average lead time, and estimated canceled booking value.
+- Visual comparisons by hotel, lead-time category, deposit type, market segment, and monthly booking volume.
 
-```text
-Cancellation rate = Canceled bookings / Total bookings
-Estimated booking value = ADR × (weekend nights + week nights)
-Estimated canceled booking value =
-    Sum of estimated booking value where is_canceled = 1
-```
+**Risk Deep Dive**
+- High lead-time cancellation risk and most-exposed market segments.
+- Deposit type × market segment, seasonal risk, and estimated canceled value by hotel.
+- Analysis notes and recommendations for follow-up investigations.
 
-The project does not model actual refunds, rebookings, payments, operating costs, or realized revenue losses.
+Both dashboard sheets have dropdowns for **Hotel**, **Arrival Year**, **Market Segment**, and **Deposit Type**. Some category comparisons intentionally exclude their own filter so that categories can still be compared.
 
-## Workbook guide
+For **All Years**, the Risk Deep Dive seasonal chart uses **2016 as its complete-year baseline**. A high cancellation rate among bookings made 360+ days in advance in 2015 (**96.24%**) is based on **266 bookings** (256 canceled), illustrating the importance of sample-size context.
 
-The Excel workbook includes **18 sheets**. Important sheets include:
+### Dashboard screenshots
 
-| Area | Worksheets |
-| --- | --- |
-| Data and quality | `raw Data`, `clean data`, `Audit`, `cleaning Log`, `Duplicate Check` |
-| Core analysis | `Cancellation Overiew`, `Hotel Comparison`, `Market Segment`, `Deposit Analysis`, `Lead Time Analysis` |
-| Extended analysis | `Revenue Risk Analysis`, `Revenue by Segment`, `Canecllation  Drivers Analysis`, `Monthly&Seasonal Analysis` |
-| Presentation | `Business Insights`, `Dashboard Engine`, `Risk Deep Dive`, ` Dashboard` |
+The finished screenshots can be uploaded to the **assets/** folder as **dashboard_overview.png** and **risk_deep_dive.png**. The vector graphic above is a KPI overview, *not* a screenshot of the live Excel interface.
 
-*Original sheet names, including spacing and spelling, are preserved from the workbook.*
+## Workbook structure and workflow
 
-## How to use
+The latest workbook contains **17 worksheets**, grouped into:
 
-1. Open `hotel_bookings_Analysis.xlsx` in **desktop Microsoft Excel** once the workbook has been uploaded.
-2. Start with the **Dashboard** tab for the overall view.
-3. Explore **Risk Deep Dive** and use the dropdown filters.
-4. Open **Business Insights** to see findings, evidence, implications, and next investigations.
-5. Review **Audit** and **cleaning Log** for data-quality documentation.
+| Stage | Sheets |
+|:--|:--|
+| Data quality | **clean data**, **Audit**, **cleaning Log** |
+| Core analysis | **Hotel Comparison**, **Market Segment**, **Deposit Analysis**, **Lead Time Analysis**, **Cancellation Overiew** |
+| Extended analysis | **Revenue Risk Analysis**, **Revenue by Segment**, **Canecllation  Drivers Analysis**, **Monthly&Seasonal Analysis**, **Business Insights** |
+| Sensitivity | **Sensitivity Analysis** |
+| Dashboards and calculation engine | **Dashboard**, **Risk Deep Dive**, **Dashboard Engine** |
 
-**Compatibility:** The project is intended for desktop Excel because it contains charts, PivotTables, and formula-driven dashboard interactions. GitHub's in-browser file preview is not an interactive Excel dashboard.
+*Sheet names reflect the workbook's actual tab labels; some original tab names contain spelling or spacing variations.*
 
-## Limitations and publication notes
+1. Review missing and unusual values, zero-night reservations, unusual ADR, guest counts, and exact matches.
+2. Document the handling decisions in **Audit** and **cleaning Log**.
+3. Use PivotTables to compare cancellation performance and booking-value exposure.
+4. Build the interactive dashboards with a supporting **Dashboard Engine**.
+5. Quantify the effect of the duplicate-handling decision in **Sensitivity Analysis**.
+6. Summarize evidence and suggested investigations in **Business Insights**.
 
-- The data covers only the supplied snapshot of bookings; the dashboards do not use a live booking feed.
-- Large cancellation percentages may relate to small samples.
-- `Non Refund` is a dataset label, and correlations are **not evidence of causation**.
-- Monetary results have **no asserted currency** and are **not confirmed revenue losses**.
-- Verify the original dataset's licensing and redistribution terms before publicly uploading raw booking records. If redistribution is restricted, publish the dashboard previews and analysis instead.
+## Definitions
+
+- **Cancellation rate:** canceled booking records ÷ total booking records.
+- **Estimated booking value:** ADR × (weekend nights + weekday nights).
+- **Estimated canceled booking value:** sum of estimated booking values for rows with is_canceled = 1.
+- **Canceled bookings:** based on the dataset's is_canceled field; **No-Show** cases are included in the canceled classification.
+- **Change in rates (pp):** difference in percentage points, not percent relative change.
+
+## How to view
+
+The full **hotel_bookings_Analysis.xlsx** workbook is intended to be opened in **Microsoft Excel for desktop** once uploaded to this repository. GitHub file previews do not execute the interactive Excel dashboards.
+
+Use the **Dashboard** and **Risk Deep Dive** tabs for the visuals, **Sensitivity Analysis** for methodology robustness, and **Audit** / **cleaning Log** to review the data-quality decisions.
+
+## Scope and limitations
+
+- The analysis uses a **static dataset**, not live hotel operations.
+- Exact matches cannot be verified as true duplicates without unique booking identifiers; both scenarios are provided.
+- The dataset's currency is **unspecified**, and canceled booked value is not proof of realized revenue loss.
+- The results are **descriptive associations, not causal effects**.
+- A subgroup with an extreme cancellation rate may have a relatively small sample.
+- **Data source and redistribution terms should be verified before publishing the full underlying booking-level data**. When permissions are unclear, publish dashboard screenshots, analysis summaries, and documentation rather than redistributing the dataset.
 
 ---
 
-**Project:** Hotel Booking Cancellation Analysis · **Tools:** Microsoft Excel, PivotTables, formulas, data cleaning, and dashboard design.
+**Tools:** Microsoft Excel · PivotTables · Excel formulas · Data-quality auditing · Interactive visualization.
