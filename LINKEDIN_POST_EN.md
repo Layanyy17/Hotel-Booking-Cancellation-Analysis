@@ -1,21 +1,22 @@
 # LinkedIn post — Hotel Booking Cancellation Analysis
 
-I’m excited to share my **Hotel Booking Cancellation Analysis** project, built in Microsoft Excel.
+I’m pleased to share my latest **Excel Data Analytics** project: **Hotel Booking Cancellation Analysis**.
 
-I worked with **119,390 hotel booking records**, covering data quality checks, cleaning documentation, PivotTable analysis, and **two interactive dashboards** to explore cancellation patterns and estimated booking-value exposure.
+Using **119,390 hotel booking records**, I worked on data-quality auditing, documenting cleaning decisions, PivotTable analysis, and building **two interactive Excel dashboards** to explore booking behavior, cancellation rates, and estimated booking-value exposure.
 
-Some findings:
-- **37.04%** of bookings were canceled (44,224 of 119,390).
+**Key observations:**
+- **37.04%** of booking records were canceled (**44,224** out of **119,390**).
 - **City Hotel** had a higher cancellation rate (**41.73%**) than **Resort Hotel** (**27.76%**).
-- The **Non Refund** segment showed a **99.36%** cancellation rate — an unusual pattern that warrants further investigation, not a causal conclusion.
-- Estimated canceled booking value totaled **16.7 million** in the dataset’s unspecified currency. This is **booking-value exposure**, not confirmed revenue loss.
+- Estimated canceled booking value totaled approximately **16.7 million** in the dataset’s unspecified currency — **not confirmed revenue loss**.
 
-The project helped me practise data cleaning, data validation, Excel formulas, PivotTables, dashboard design, and turning data into questions for further analysis.
+**An important lesson from the project:** I found **31,994 exact matching rows**. Because no unique booking ID was available to verify whether these were true duplicates, I kept all records in the primary analysis and built a **Sensitivity Analysis** to measure the alternative. Excluding exact matches changed the overall cancellation rate from **37.04% to 27.49%**, a difference of **9.55 percentage points**.
+
+This experience strengthened my understanding of **data cleaning, analytical judgment, reporting transparency, Excel formulas, PivotTables, and dashboard storytelling**.
 
 🔗 GitHub: https://github.com/Layanyy17/Hotel-Booking-Cancellation-Analysis
 
-#DataAnalytics #Excel #DataCleaning #Dashboard #BusinessIntelligence #PortfolioProject
+#DataAnalytics #Excel #DataCleaning #DataVisualization #BusinessIntelligence #PortfolioProject
 
 ---
 
-**Publishing suggestion:** Attach the two dashboard screenshots to your LinkedIn post, and ensure the repository contains the Excel file and images before sharing this link widely.
+**Posting checklist:** Include screenshots of both dashboards. Confirm the final Excel workbook and screenshots have been uploaded before sharing the repository link broadly.
