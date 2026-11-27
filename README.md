@@ -70,7 +70,15 @@ For **All Years**, the Risk Deep Dive seasonal chart uses **2016 as its complete
 
 ### Dashboard screenshots
 
-The finished screenshots can be uploaded to the **assets/** folder as **dashboard_overview.png** and **risk_deep_dive.png**. The vector graphic above is a KPI overview, *not* a screenshot of the live Excel interface.
+**Interactive dashboard overview (Excel):**
+
+![Hotel Booking — Dashboard](assets/dashboard_overview.png)
+
+**Cancellation risk deep dive (Excel):**
+
+![Hotel Booking — Risk Deep Dive](assets/risk_deep_dive.png)
+
+*Screenshots are static previews; open the Excel workbook for the interactive filters and charts.*
 
 ## Workbook structure and workflow
 
